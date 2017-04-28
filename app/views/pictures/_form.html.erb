@@ -1,13 +1,23 @@
-<%= form_for(@picture, url: choose_new_or_edit) do |f| %>
+<%= form_for(@picture) do |f| %>
   <%= f.error_messages! %>
-      
+
   <%= f.label :タイトル %>
   <%= f.text_field :title, class: 'form-control' %>
   <br>
-  <%= f.label :内容 %>
+  <%= f.label :コメント %>
   <%= f.text_field :content, class: 'form-control' %>
+
+  <% if @picture.image.url.blank? %>
+    <%= f.label :写真 %>
+  <% else %>
+    <%= f.label :現在の写真 %>
+    <%= image_tag @picture.image.url %>
+  <% end %>
+  <%= f.file_field :image %>
+
+  <%= f.hidden_field :image_cache %>
   <br>
   <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
 <% end %>
 
-<%= link_to "ブログ一覧画面にもどる", pictures_path %>
+<%= link_to "投稿一覧画面にもどる", pictures_path %>

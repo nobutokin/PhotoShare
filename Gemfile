@@ -49,6 +49,7 @@ gem 'devise'
 
 group :development do
   gem 'dotenv-rails'
+  gem 'letter_opener_web'
 end
 
 gem 'omniauth'
@@ -58,3 +59,6 @@ gem 'omniauth-facebook'
 #image uploader
 gem 'carrierwave'
 gem 'rmagick'
+
+gem 'pry-rails'
+gem 'better_errors'

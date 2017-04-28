@@ -8,6 +8,7 @@ ja:
       picture:
         title: "タイトル"
         content: "内容"
+        image: "写真"
       contact:
         name: "名前"
         email: "メールアドレス"

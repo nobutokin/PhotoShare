@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user!, :set_picture, only: [:edit, :update, :destroy]
-  
+
   def index
     @pictures = Picture.all
   end
@@ -51,9 +51,9 @@ class PicturesController < ApplicationController
 
   private
     def pictures_params
-      params.require(:picture).permit(:title, :content)
+      params.require(:picture).permit(:title, :content, :image, :image_cache, :remove_image)
     end
-  
+
     def set_picture
       @picture = Picture.find(params[:id])
     end

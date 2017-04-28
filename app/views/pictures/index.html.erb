@@ -4,16 +4,19 @@
     <h1>投稿一覧</h1>
       <%= link_to "投稿する", new_picture_path, class: 'btn btn-default' %>
     <% @pictures.each do |picture| %>
-    <div class="row">
-      <h4><strong><%= picture.title %></strong></h4>
-      <p><%= picture.content %></p>
-      <div class="field">
-        <p><%= f.file_field :upload_file %></p>
+      <div class="row">
+        <h4><strong>タイトル：<%= picture.title %></strong></h4>
+        <p>投稿者：<%= picture.user.name %></p>
+        <p>コメント：<%= picture.content %></p>
+        <div class="field">
+          <% if picture.image? %>
+            <p>写真:<%= image_tag picture.image.url %></p>
+          <% end %>
+        </div>
+
+        <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
       </div>
-      
-      <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-    </div>
     <% end %>
     <div id="page-top-btn" class="page-top-btn">
       <p><a class="move-page-top" id="move-page-top">▲</a></p>
