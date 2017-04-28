@@ -62,3 +62,5 @@ gem 'rmagick'
 
 gem 'pry-rails'
 gem 'better_errors'
+
+gem 'rails_12factor', group: :production
